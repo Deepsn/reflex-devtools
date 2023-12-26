@@ -1,6 +1,10 @@
 /// <reference types="@rbxts/types/plugin" />
 
 import { createProducer } from "@rbxts/reflex"
+import { RunService } from "@rbxts/services"
+import { generateAction } from "../utils/generateActions"
+
+const isRunning = RunService.IsRunning()
 
 interface DispatchedAction {
 	name: string
@@ -17,7 +21,7 @@ export interface Game {
 }
 
 const initialState: Game = {
-	actions: []
+	actions: isRunning ? [] : table.create(10, 0).map(() => generateAction())
 }
 
 export const _game = createProducer(initialState, {
