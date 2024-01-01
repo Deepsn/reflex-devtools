@@ -11,8 +11,8 @@ const RANDOM_STRINGS = [
 
 export function generateAction(): Action {
 	return {
-		name: RANDOM_STRINGS[math.random(RANDOM_STRINGS.size())],
-		args: table.create(10, 0).map(() => RANDOM_STRINGS[math.random(RANDOM_STRINGS.size())]),
+		name: RANDOM_STRINGS[math.random(RANDOM_STRINGS.size() + 1)],
+		args: table.create(10, 0).map(() => RANDOM_STRINGS[math.random(RANDOM_STRINGS.size() + 1)]),
 		state: {
 			buzz: "buzz",
 			foo: "foo",
