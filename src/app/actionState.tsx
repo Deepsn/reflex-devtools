@@ -1,4 +1,4 @@
-import Roact, { Element, useEffect, useRef, useState } from "@rbxts/roact"
+import Roact, { Element, useEffect, useState } from "@rbxts/roact"
 import { t } from "@rbxts/t"
 import { StateFrame } from "./stateFrame"
 import { StateLabel } from "./stateLabel"
@@ -8,7 +8,6 @@ interface Props {
 }
 
 export function ActionState(props: Props) {
-	const label = useRef<TextLabel>()
 	const [elements, setElements] = useState<Element[]>([])
 
 	useEffect(() => {
