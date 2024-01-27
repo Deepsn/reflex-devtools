@@ -1,5 +1,5 @@
 import Highlighter from "@rbxts/highlighter"
-import Roact, { useEffect, useMemo } from "@rbxts/roact"
+import Roact, { Element, useBinding, useEffect, useMemo } from "@rbxts/roact"
 import { useRootProducer, useRootSelector } from "store"
 import { ActionSelection } from "./actionSelection"
 import { ActionState } from "./actionState"
@@ -14,7 +14,10 @@ const ROW_HEIGHT = 30
 export function App() {
 	const store = useRootProducer()
 
+	const [cachedActions, setCachedActions] = useBinding<Element[]>([])
+
 	const actions = useRootSelector(state => state.game.actions)
+	const enabled = useRootSelector(state => state.widget.enabled)
 	const selectedIndex = useRootSelector(state => state.widget.selectedIndex)
 	const autoSelectLatest = useRootSelector(state => state.widget.autoSelectLatest)
 	const showArgs = useRootSelector(state => state.widget.showArgs)
@@ -29,10 +32,17 @@ export function App() {
 	}, [selectedIndex, actions, autoSelectLatest])
 
 	const actionSelections = useMemo(() => {
-		return actions.map((action, index) => (
+		if (!enabled) {
+			return cachedActions.getValue()
+		}
+
+		const selections = actions.map((action, index) => (
 			<ActionSelection action={action} index={index} key={index} selected={index === selectedIndex} />
 		))
-	}, [actions, selectedIndex])
+
+		setCachedActions(selections)
+		return selections
+	}, [actions, selectedIndex, enabled])
 
 	return (
 		<frame BackgroundTransparency={1} Size={UDim2.fromScale(1, 1)} key="main">
@@ -43,6 +53,11 @@ export function App() {
 				Size={new UDim2(1, 0, 0, ROW_HEIGHT)}
 				key="topRow"
 			>
+				<RowText text={"Enabled"} order={-3} />
+				<RowButton text={enabled ? "On" : "Off"} order={-2} onClick={() => store.changeEnabled(!enabled)} />
+
+				<RowText order={-1} text="•" />
+
 				<RowText order={0} text={`${actions.size()} dispatched`} />
 				<RowButton key="clear" onClick={() => store.clear()} order={1} text="Clear" />
 
