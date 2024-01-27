@@ -2,13 +2,17 @@ import Roact, { Element, useEffect, useState } from "@rbxts/roact"
 import { t } from "@rbxts/t"
 import { StateFrame } from "./stateFrame"
 import { StateLabel } from "./stateLabel"
+import { useRootSelector } from "../store"
+import getDiff from "../utils/getDiff"
 
 interface Props {
 	state: {}
+	lastState: {}
 }
 
 export function ActionState(props: Props) {
 	const [elements, setElements] = useState<Element[]>([])
+	const diffMode = useRootSelector(state => state.widget.diffMode)
 
 	useEffect(() => {
 		function mapState(value: defined, key?: string, nestedLevel = 0) {
@@ -36,8 +40,8 @@ export function ActionState(props: Props) {
 			}
 		}
 
-		setElements([mapState(props.state)])
-	}, [props.state])
+		setElements([mapState(diffMode ? getDiff(props.state, props.lastState) : props.state)])
+	}, [props.state, diffMode])
 
 	return (
 		<scrollingframe

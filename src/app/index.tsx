@@ -21,6 +21,7 @@ export function App() {
 	const selectedIndex = useRootSelector(state => state.widget.selectedIndex)
 	const autoSelectLatest = useRootSelector(state => state.widget.autoSelectLatest)
 	const showArgs = useRootSelector(state => state.widget.showArgs)
+	const diffMode = useRootSelector(state => state.widget.diffMode)
 
 	const selectedAction = selectedIndex !== undefined ? actions[selectedIndex] : undefined
 
@@ -54,7 +55,12 @@ export function App() {
 				key="topRow"
 			>
 				<RowText text={"Enabled"} order={-3} />
-				<RowButton text={enabled ? "On" : "Off"} order={-2} onClick={() => store.changeEnabled(!enabled)} />
+				<RowButton
+					key={"enabled"}
+					text={enabled ? "On" : "Off"}
+					order={-2}
+					onClick={() => store.changeEnabled(!enabled)}
+				/>
 
 				<RowText order={-1} text="•" />
 
@@ -79,6 +85,16 @@ export function App() {
 					onClick={() => store.changeShowArgs(!showArgs)}
 					order={7}
 					text={showArgs ? "On" : "Off"}
+				/>
+
+				<RowText order={8} text="•" />
+
+				<RowText order={9} text="Diff mode" />
+				<RowButton
+					key="diffmode"
+					onClick={() => store.changeDiffMode(!diffMode)}
+					order={10}
+					text={diffMode ? "On" : "Off"}
 				/>
 
 				<uilistlayout
@@ -113,7 +129,9 @@ export function App() {
 				Size={new UDim2(1 - ACTIONS_WIDTH, 0, 1, -ROW_HEIGHT)}
 				key="state"
 			>
-				{selectedAction && <ActionState state={selectedAction.state} />}
+				{selectedAction && (
+					<ActionState state={selectedAction.state} lastState={actions[selectedIndex!].state} />
+				)}
 			</frame>
 		</frame>
 	)
