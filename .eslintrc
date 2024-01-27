@@ -19,7 +19,7 @@
 		"roblox-ts/lua-truthiness": "error",
 		"object-shorthand": "error",
 		"curly": ["error", "multi-line"],
-		"prettier/prettier": "warn",
+		"prettier/prettier": "off",
 		"react/jsx-sort-props": "warn",
 
 		"prefer-const": [
