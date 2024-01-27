@@ -8,7 +8,7 @@ import { State } from "../store/game"
 
 interface Props {
 	state: State
-	lastState: State
+	lastState: State | undefined
 }
 
 export function ActionState(props: Props) {
@@ -39,7 +39,7 @@ export function ActionState(props: Props) {
 			return <StateLabel Text={(key !== undefined ? `['${key}'] = ` : "") + value} nestedLevel={nestedLevel} />
 		}
 
-		setElements([mapState(diffMode ? getDiff(props.state, props.lastState) : props.state)])
+		setElements([mapState(diffMode && props.lastState ? getDiff(props.state, props.lastState) : props.state)])
 	}, [props.state, diffMode])
 
 	return (

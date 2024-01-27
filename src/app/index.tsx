@@ -136,7 +136,7 @@ export function App() {
 			>
 				{selectedAction && (
 					// biome-ignore lint/style/noNonNullAssertion: selectedIndex is known to exist
-					<ActionState state={selectedAction.state} lastState={actions[selectedIndex!].state} />
+					<ActionState state={selectedAction.state} lastState={actions[selectedIndex! - 1]?.state} />
 				)}
 			</frame>
 		</frame>
