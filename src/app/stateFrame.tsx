@@ -4,7 +4,7 @@ import Object from "@rbxts/object-utils"
 export function StateFrame(props: JSX.IntrinsicElement<Frame> & { nestedLevel: number }) {
 	const propBlacklist = ["nestedLevel"]
 	const otherProps = Object.fromEntries(
-		Object.entries(props).filter(([key]) => !propBlacklist.includes(key as string)) as [string, unknown][]
+		Object.entries(props).filter(([key]) => !propBlacklist.includes(key as string)) as [string, unknown][],
 	)
 
 	const [collapsed, setCollapsed] = useState(true)
@@ -14,7 +14,7 @@ export function StateFrame(props: JSX.IntrinsicElement<Frame> & { nestedLevel: n
 			BackgroundTransparency={1}
 			BorderSizePixel={0}
 			Event={{
-				MouseButton1Click: () => setCollapsed(false)
+				MouseButton1Click: () => setCollapsed(false),
 			}}
 			Size={new UDim2(0, 40, 0, 20)}
 			Text={"{ ... }"}
@@ -29,7 +29,7 @@ export function StateFrame(props: JSX.IntrinsicElement<Frame> & { nestedLevel: n
 			BackgroundTransparency={1}
 			BorderSizePixel={0}
 			Event={{
-				MouseButton1Click: () => setCollapsed(true)
+				MouseButton1Click: () => setCollapsed(true),
 			}}
 			Size={UDim2.fromScale(1, 0)}
 			Text={""}

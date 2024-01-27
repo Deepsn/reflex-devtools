@@ -6,7 +6,7 @@ const RANDOM_STRINGS = [
 	"and I love roblox",
 	"Two plus two is four",
 	"Minus one that's three",
-	"Quick maths"
+	"Quick maths",
 ]
 
 export function generateAction(): Action {
@@ -18,13 +18,13 @@ export function generateAction(): Action {
 			foo: "foo",
 			bar: {
 				nested: {
-					things: "wow"
+					things: "wow",
 				},
 				not_nested: "not wow",
 				[1]: "interesting key",
-				[2]: "interesting key 2"
-			}
+				[2]: "interesting key 2",
+			},
 		},
-		timestamp: tick()
+		timestamp: tick(),
 	}
 }

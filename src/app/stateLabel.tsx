@@ -4,7 +4,7 @@ import Object from "@rbxts/object-utils"
 export function StateLabel(props: JSX.IntrinsicElement<TextLabel> & { nestedLevel: number }) {
 	const propBlacklist = ["nestedLevel"]
 	const otherProps = Object.fromEntries(
-		Object.entries(props).filter(([key]) => !propBlacklist.includes(key as string)) as [string, unknown][]
+		Object.entries(props).filter(([key]) => !propBlacklist.includes(key as string)) as [string, unknown][],
 	)
 
 	return (

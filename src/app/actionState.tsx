@@ -4,15 +4,16 @@ import { StateFrame } from "./stateFrame"
 import { StateLabel } from "./stateLabel"
 import { useRootSelector } from "../store"
 import getDiff from "../utils/getDiff"
+import { State } from "../store/game"
 
 interface Props {
-	state: {}
-	lastState: {}
+	state: State
+	lastState: State
 }
 
 export function ActionState(props: Props) {
 	const [elements, setElements] = useState<Element[]>([])
-	const diffMode = useRootSelector(state => state.widget.diffMode)
+	const diffMode = useRootSelector((state) => state.widget.diffMode)
 
 	useEffect(() => {
 		function mapState(value: defined, key?: string, nestedLevel = 0) {
@@ -33,11 +34,9 @@ export function ActionState(props: Props) {
 						{children}
 					</StateFrame>
 				)
-			} else {
-				return (
-					<StateLabel Text={(key !== undefined ? `['${key}'] = ` : "") + value} nestedLevel={nestedLevel} />
-				)
 			}
+
+			return <StateLabel Text={(key !== undefined ? `['${key}'] = ` : "") + value} nestedLevel={nestedLevel} />
 		}
 
 		setElements([mapState(diffMode ? getDiff(props.state, props.lastState) : props.state)])

@@ -1,9 +1,8 @@
 import Object from "@rbxts/object-utils"
-
-type State = { [key: string]: unknown }
+import { State } from "../store/game"
 
 export default function getDiff(state: State, lastState: State) {
-	const diff: { [key: string]: unknown } = {}
+	const diff: State = {}
 
 	for (const [key, value] of Object.entries(lastState)) {
 		if (type(value) !== "table") {

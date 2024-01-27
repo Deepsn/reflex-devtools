@@ -43,6 +43,6 @@ export const widget = createProducer(initialState, {
 	}),
 	changeDiffMode: (state, mode: boolean) => ({
 		...state,
-		diffMode: mode
-	})
+		diffMode: mode,
+	}),
 })

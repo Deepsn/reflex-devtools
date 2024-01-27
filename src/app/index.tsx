@@ -14,14 +14,14 @@ const ROW_HEIGHT = 30
 export function App() {
 	const store = useRootProducer()
 
-	const [cachedActions, setCachedActions] = useBinding<Element[]>([])
+	const [cachedActions, setCachedActions] = useBinding<Map<number, Element>>(new Map())
 
-	const actions = useRootSelector(state => state.game.actions)
-	const enabled = useRootSelector(state => state.widget.enabled)
-	const selectedIndex = useRootSelector(state => state.widget.selectedIndex)
-	const autoSelectLatest = useRootSelector(state => state.widget.autoSelectLatest)
-	const showArgs = useRootSelector(state => state.widget.showArgs)
-	const diffMode = useRootSelector(state => state.widget.diffMode)
+	const actions = useRootSelector((state) => state.game.actions)
+	const enabled = useRootSelector((state) => state.widget.enabled)
+	const selectedIndex = useRootSelector((state) => state.widget.selectedIndex)
+	const autoSelectLatest = useRootSelector((state) => state.widget.autoSelectLatest)
+	const showArgs = useRootSelector((state) => state.widget.showArgs)
+	const diffMode = useRootSelector((state) => state.widget.diffMode)
 
 	const selectedAction = selectedIndex !== undefined ? actions[selectedIndex] : undefined
 
@@ -37,9 +37,14 @@ export function App() {
 			return cachedActions.getValue()
 		}
 
-		const selections = actions.map((action, index) => (
-			<ActionSelection action={action} index={index} key={index} selected={index === selectedIndex} />
-		))
+		const selections = new Map<number, Element>()
+
+		for (const [index, action] of pairs(actions)) {
+			selections.set(
+				index,
+				<ActionSelection action={action} index={index} key={index} selected={index === selectedIndex} />,
+			)
+		}
 
 		setCachedActions(selections)
 		return selections
@@ -130,6 +135,7 @@ export function App() {
 				key="state"
 			>
 				{selectedAction && (
+					// biome-ignore lint/style/noNonNullAssertion: selectedIndex is known to exist
 					<ActionState state={selectedAction.state} lastState={actions[selectedIndex!].state} />
 				)}
 			</frame>

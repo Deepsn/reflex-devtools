@@ -6,10 +6,12 @@ import { generateAction } from "../utils/generateActions"
 
 const isRunning = RunService.IsRunning()
 
+export type State = { [key: string]: unknown }
+
 interface DispatchedAction {
 	name: string
 	args: unknown[]
-	state: object
+	state: State
 }
 
 export interface Action extends DispatchedAction {
@@ -21,7 +23,7 @@ export interface Game {
 }
 
 const initialState: Game = {
-	actions: isRunning ? [] : table.create(10, 0).map(() => generateAction())
+	actions: isRunning ? [] : table.create(10, 0).map(() => generateAction()),
 }
 
 export const _game = createProducer(initialState, {
