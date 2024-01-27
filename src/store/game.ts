@@ -9,7 +9,7 @@ const isRunning = RunService.IsRunning()
 interface DispatchedAction {
 	name: string
 	args: unknown[]
-	state: {}
+	state: object
 }
 
 export interface Action extends DispatchedAction {
@@ -27,10 +27,10 @@ const initialState: Game = {
 export const _game = createProducer(initialState, {
 	dispatched: (state, action: DispatchedAction, timestamp: number) => ({
 		...state,
-		actions: [...state.actions, { ...action, timestamp }]
+		actions: [...state.actions, { ...action, timestamp }],
 	}),
-	clear: state => ({
+	clear: (state) => ({
 		...state,
-		actions: []
-	})
+		actions: [],
+	}),
 })

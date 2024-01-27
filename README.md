@@ -2,6 +2,8 @@
 
 Developer tools for [Reflex](https://github.com/littensy/reflex), a Roblox state container library.
 
+![image](https://github.com/jackTabsCode/reflex-devtools/assets/44332148/b3b368ef-dc0e-4eec-8119-3d8b5e9c527f)
+
 > [!WARNING]
 > This is nowhere near finished, but is usable! It should only be used on the Client at this time.
 
@@ -28,7 +30,7 @@ Here's what I use:
 ```ts
 const event = ReplicatedStorage.FindFirstChild("REFLEX_DEVTOOLS") as RemoteEvent
 
-export const devToolsMiddleware: ProducerMiddleware<RootState, RootActions> = () => {
+const middleware: ProducerMiddleware<RootState, RootActions> = () => {
 	return (nextAction, actionName) => {
 		return (...args) => {
 			const state = nextAction(...args)
@@ -40,6 +42,8 @@ export const devToolsMiddleware: ProducerMiddleware<RootState, RootActions> = ()
 		}
 	}
 }
+
+export = middleware
 ```
 
 Whatever you do, fire the event an object that satisfies the following type:
@@ -57,14 +61,10 @@ interface DispatchedAction {
 ```ts
 export const store = combineProducers({
 	// ...
-}).applyMiddleware(devToolsMiddleware)
+}).applyMiddleware(devTools)
 ```
 
 ## Why does it use RemoteEvents?
 
 Couldn't get BindableEvents to be received by the Plugin.
 Context: https://discord.com/channels/385151591524597761/385151591998816257/1149590579529912320
-
-## Attributions
-
-Can be found in `package.json`

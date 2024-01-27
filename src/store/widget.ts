@@ -16,30 +16,30 @@ const initialState: Widget = {
 	enabled: true,
 	autoSelectLatest: true,
 	showArgs: true,
-	diffMode: false
+	diffMode: false,
 }
 
 export const widget = createProducer(initialState, {
 	toggled: (state, open?: boolean) => ({
 		...state,
-		open: open ?? !state.open
+		open: open ?? !state.open,
 	}),
 	changeEnabled: (state, enabled: boolean) => ({
 		...state,
-		enabled
+		enabled,
 	}),
 	selectedAction: (state, index: number, manual?: boolean) => ({
 		...state,
 		selectedIndex: index,
-		autoSelectLatest: !manual
+		autoSelectLatest: !manual,
 	}),
 	changeAutoSelectMode: (state, mode: boolean) => ({
 		...state,
-		autoSelectLatest: mode
+		autoSelectLatest: mode,
 	}),
 	changeShowArgs: (state, show: boolean) => ({
 		...state,
-		showArgs: show
+		showArgs: show,
 	}),
 	changeDiffMode: (state, mode: boolean) => ({
 		...state,
