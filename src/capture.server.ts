@@ -17,7 +17,7 @@ if (!event) {
 const guard = t.interface({
 	name: t.string,
 	args: t.array(t.any),
-	state: t.keyOf(t.string),
+	state: t.keys(t.string) as unknown as t.check<{ [key: string]: unknown }>,
 })
 
 const clientGuard = t.intersection(
