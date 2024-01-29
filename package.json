@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"compile": "rbxtsc",
-		"build": "rojo build -o build/ReflexDevTools.rbxm",
+		"build": "rojo build -o build/ReflexDevTools.rbxm --watch",
 		"serve": "rojo serve serve.project.json",
 		"watch": "rbxtsc -w"
 	},
