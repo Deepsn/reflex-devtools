@@ -40,10 +40,7 @@ export function App() {
 		const selections = new Map<number, Element>()
 
 		for (const [index, action] of pairs(actions)) {
-			selections.set(
-				index,
-				<ActionSelection action={action} index={index} key={index} selected={index === selectedIndex} />,
-			)
+			selections.set(index, <ActionSelection action={action} index={index} selected={index === selectedIndex} />)
 		}
 
 		setCachedActions(selections)

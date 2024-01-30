@@ -1,45 +1,61 @@
-import Roact, { Element, useEffect, useState } from "@rbxts/roact"
+import Roact, { Element, useEffect, useMemo } from "@rbxts/roact"
 import { t } from "@rbxts/t"
+import { useRootSelector } from "../store"
+import { State } from "../store/game"
 import { StateFrame } from "./stateFrame"
 import { StateLabel } from "./stateLabel"
-import { useRootSelector } from "../store"
-import getDiff from "../utils/getDiff"
-import { State } from "../store/game"
 
 interface Props {
 	state: State
 	lastState: State | undefined
 }
 
+export function parseValueKey(key?: unknown) {
+	return key ? `[${tonumber(key) === undefined ? `"${key}"` : key}] = ` : ""
+}
+
+function mapState(value: defined, key?: unknown, nestedLevel = 0, _index?: number) {
+	const parsedKey = parseValueKey(key)
+
+	if (!t.table(value)) {
+		return (
+			<StateLabel
+				key={_index && string.format("%02d", _index)}
+				Text={`${parsedKey}${value}`}
+				nestedLevel={nestedLevel}
+			/>
+		)
+	}
+
+	const children: Element[] = []
+	let index = 0
+
+	for (const [nestedKey, nestedValue] of pairs(value)) {
+		index++
+		children.push(mapState(nestedValue, nestedKey, nestedLevel + 1, index))
+	}
+
+	return (
+		<StateFrame
+			key={_index && string.format("%02d", _index)}
+			valueKey={parsedKey}
+			nestedLevel={nestedLevel}
+			isEmpty={index === 0}
+		>
+			{children}
+		</StateFrame>
+	)
+}
+
 export function ActionState(props: Props) {
-	const [elements, setElements] = useState<Element[]>([])
 	const diffMode = useRootSelector((state) => state.widget.diffMode)
+	const elements = useMemo(() => mapState(props.state), [props.state, diffMode])
 
 	useEffect(() => {
-		function mapState(value: defined, key?: string, nestedLevel = 0) {
-			if (t.table(value)) {
-				const children: Element[] = []
-
-				children.push(<StateLabel Text={"{"} nestedLevel={nestedLevel} />)
-
-				for (const [nestedKey, nestedValue] of pairs(value)) {
-					children.push(mapState(nestedValue, nestedKey as string, nestedLevel + 1))
-				}
-
-				children.push(<StateLabel Text={"}"} nestedLevel={nestedLevel} />)
-
-				return (
-					<StateFrame nestedLevel={nestedLevel}>
-						<uilistlayout />
-						{children}
-					</StateFrame>
-				)
-			}
-
-			return <StateLabel Text={(key !== undefined ? `['${key}'] = ` : "") + value} nestedLevel={nestedLevel} />
+		if (diffMode) {
+			return
 		}
-
-		setElements([mapState(diffMode && props.lastState ? getDiff(props.state, props.lastState) : props.state)])
+		print("State changed", props.state)
 	}, [props.state, diffMode])
 
 	return (
