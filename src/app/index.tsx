@@ -23,10 +23,10 @@ export function App() {
 	const showArgs = useRootSelector((state) => state.widget.showArgs)
 	const diffMode = useRootSelector((state) => state.widget.diffMode)
 
-	const selectedAction = selectedIndex !== undefined ? actions[selectedIndex] : undefined
+	const selectedAction = selectedIndex !== undefined ? actions[selectedIndex - 1] : undefined
 
 	useEffect(() => {
-		const last = actions.size() - 1
+		const last = actions.size()
 		if (autoSelectLatest && last >= 0) {
 			store.selectedAction(last)
 		}
