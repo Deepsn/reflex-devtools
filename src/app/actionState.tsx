@@ -1,9 +1,10 @@
-import Roact, { Element, useEffect, useMemo } from "@rbxts/roact"
+import Roact, { Element, useMemo } from "@rbxts/roact"
 import { t } from "@rbxts/t"
 import { useRootSelector } from "../store"
 import { State } from "../store/game"
 import { StateFrame } from "./stateFrame"
 import { StateLabel } from "./stateLabel"
+import getDiff from "../utils/getDiff"
 
 interface Props {
 	state: State
@@ -49,14 +50,11 @@ function mapState(value: defined, key?: unknown, nestedLevel = 0, _index?: numbe
 
 export function ActionState(props: Props) {
 	const diffMode = useRootSelector((state) => state.widget.diffMode)
-	const elements = useMemo(() => mapState(props.state), [props.state, diffMode])
 
-	useEffect(() => {
-		if (diffMode) {
-			return
-		}
-		print("State changed", props.state)
-	}, [props.state, diffMode])
+	const elements = useMemo(
+		() => mapState(diffMode && props.lastState ? getDiff(props.state, props.lastState) : props.state),
+		[props.state, diffMode],
+	)
 
 	return (
 		<scrollingframe
