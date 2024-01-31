@@ -1,4 +1,4 @@
-import Roact, { Children, Element, useState } from "@rbxts/roact"
+import Roact, { Children, Element, useEffect, useState } from "@rbxts/roact"
 import { StateLabel } from "./stateLabel"
 
 interface StateFrameProps {
@@ -14,6 +14,14 @@ export function StateFrame({
 	isEmpty,
 }: StateFrameProps & { [Children]?: Element[] }) {
 	const [collapsed, setCollapsed] = useState(true)
+
+	useEffect(() => {
+		const size = children?.size()
+
+		if (size === 0) {
+			setCollapsed(true)
+		}
+	}, [children])
 
 	const ArrowIcon = () => (
 		<textbutton
