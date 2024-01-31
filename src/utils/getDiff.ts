@@ -29,6 +29,8 @@ export default function getDiff(state: State, lastState: State) {
 			if (Object.entries(subDiff).size() > 0) {
 				diff[key] = subDiff
 			}
+		} else if (lastState[key] === undefined) {
+			diff[`*${key}`] = value
 		}
 	}
 
