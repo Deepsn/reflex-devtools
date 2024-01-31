@@ -5,6 +5,7 @@ import { createRoot } from "@rbxts/react-roblox"
 import Roact from "@rbxts/roact"
 import { App } from "app"
 import { store } from "store"
+import { configureSettings, listenForChanges } from "./utils/settings"
 
 const toolbar = plugin.CreateToolbar("Reflex DevTools")
 const button = toolbar.CreateButton(
@@ -32,6 +33,9 @@ store.subscribe(
 		dockWidget.Enabled = open
 	},
 )
+
+configureSettings()
+listenForChanges()
 
 const root = createRoot(dockWidget)
 

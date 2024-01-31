@@ -1,13 +1,15 @@
 /// <reference types="@rbxts/types/plugin" />
 
-import { UseProducerHook, UseSelectorHook, useProducer, useSelector } from "@rbxts/react-reflex"
-import { CombineProducers, combineProducers } from "@rbxts/reflex"
+import { useProducer, UseProducerHook, useSelector, UseSelectorHook } from "@rbxts/react-reflex"
+import { CombineProducers, combineProducers, InferState } from "@rbxts/reflex"
 import { _game } from "./game"
 import { widget } from "./widget"
 
 const slices = { widget, game: _game }
 
 export type Store = CombineProducers<typeof slices>
+
+export type RootState = InferState<Store>
 
 export const useRootProducer: UseProducerHook<Store> = useProducer
 export const useRootSelector: UseSelectorHook<Store> = useSelector
