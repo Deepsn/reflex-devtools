@@ -5,6 +5,7 @@ import { RunService } from "@rbxts/services"
 import { generateAction } from "../utils/generateActions"
 
 const isRunning = RunService.IsRunning()
+const DEV_MODE = false
 
 export type State = { [key: string]: unknown }
 
@@ -23,7 +24,7 @@ export interface Game {
 }
 
 const initialState: Game = {
-	actions: isRunning ? [] : table.create(10, 0).map(() => generateAction()),
+	actions: !isRunning && DEV_MODE ? table.create(10, 0).map(() => generateAction()) : [],
 }
 
 export const _game = createProducer(initialState, {
