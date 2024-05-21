@@ -1,4 +1,5 @@
-import Roact, { Children, Element, useEffect, useState } from "@rbxts/roact"
+import React, { Children, type Element, useEffect, useState, type PropsWithChildren } from "@rbxts/react"
+import { useMemo } from "@rbxts/react"
 import { StateLabel } from "./stateLabel"
 
 interface StateFrameProps {
@@ -7,16 +8,12 @@ interface StateFrameProps {
 	isEmpty: boolean
 }
 
-export function StateFrame({
-	[Children]: children,
-	valueKey,
-	nestedLevel,
-	isEmpty,
-}: StateFrameProps & { [Children]?: Element[] }) {
+export function StateFrame({ children, valueKey, nestedLevel, isEmpty }: StateFrameProps & PropsWithChildren) {
 	const [collapsed, setCollapsed] = useState(true)
+	const childrenArray = useMemo(() => Children.toArray(children), [children]);
 
 	useEffect(() => {
-		const size = children?.size()
+		const size = childrenArray.size();
 
 		if (size === 0) {
 			setCollapsed(true)
@@ -60,7 +57,7 @@ export function StateFrame({
 
 			{children}
 
-			<StateLabel Text={"}"} key={children ? children.size() + 1 : 1} nestedLevel={nestedLevel} />
+			<StateLabel Text={"}"} key={children ? childrenArray.size() + 1 : 1} nestedLevel={nestedLevel} />
 		</frame>
 	)
 }

@@ -1,5 +1,6 @@
 import Highlighter from "@rbxts/highlighter"
-import Roact, { Element, useBinding, useEffect, useMemo } from "@rbxts/roact"
+import { Element, useBinding, useEffect, useMemo } from "@rbxts/react"
+import React from "@rbxts/react"
 import { useRootProducer, useRootSelector } from "store"
 import { ActionSelection } from "./actionSelection"
 import { ActionState } from "./actionState"

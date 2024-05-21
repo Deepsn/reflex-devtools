@@ -1,6 +1,6 @@
-import Roact from "@rbxts/roact"
+import React from "@rbxts/react"
 
-export function StateLabel(props: JSX.IntrinsicElement<TextBox> & { nestedLevel?: number }) {
+export function StateLabel(props: JSX.IntrinsicElements["textbox"] & { nestedLevel?: number }) {
 	const { nestedLevel, children } = props
 	const otherProps = { ...props, nestedLevel: undefined, children: undefined }
 

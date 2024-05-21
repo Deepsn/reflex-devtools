@@ -1,10 +1,10 @@
-import Roact, { Element, useMemo } from "@rbxts/roact"
+import React, { type Element, useMemo } from "@rbxts/react"
 import { t } from "@rbxts/t"
 import { useRootSelector } from "../store"
-import { State } from "../store/game"
+import type { State } from "../store/game"
+import getDiff from "../utils/getDiff"
 import { StateFrame } from "./stateFrame"
 import { StateLabel } from "./stateLabel"
-import getDiff from "../utils/getDiff"
 
 interface Props {
 	state: State

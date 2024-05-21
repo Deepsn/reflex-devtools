@@ -8,8 +8,11 @@ importers:
 
   .:
     dependencies:
+      '@rbxts/compiler-types':
+        specifier: 2.3.0-types.1
+        version: 2.3.0-types.1
       '@rbxts/highlighter':
-        specifier: ^0.8.2-ts.1
+        specifier: 0.8.2-ts.1
         version: 0.8.2-ts.1
       '@rbxts/inspect':
         specifier: ^1.0.1
@@ -17,43 +20,37 @@ importers:
       '@rbxts/object-utils':
         specifier: ^1.0.4
         version: 1.0.4
-      '@rbxts/pretty-react-hooks':
-        specifier: ^0.2.1
-        version: 0.2.1(@rbxts/flipper@2.0.1)(@rbxts/react-ts@0.9.0)
+      '@rbxts/react':
+        specifier: ^0.1.0
+        version: 0.1.1
+      '@rbxts/react-reflex':
+        specifier: ^0.3.4
+        version: 0.3.4(@rbxts/react@0.1.1)(@rbxts/reflex@4.3.1)
+      '@rbxts/react-roblox':
+        specifier: ^0.3.6
+        version: 0.3.6
+      '@rbxts/reflex':
+        specifier: ^4.3.1
+        version: 4.3.1
+      '@rbxts/roact-hooked':
+        specifier: ^2.6.2
+        version: 2.6.2(@rbxts/roact@1.4.4-ts.0)
+      '@rbxts/services':
+        specifier: ^1.5.4
+        version: 1.5.4
       '@rbxts/t':
-        specifier: ^3.1.0
+        specifier: ^3.1.1
         version: 3.1.1
+      '@rbxts/types':
+        specifier: ^1.0.776
+        version: 1.0.776
     devDependencies:
       '@biomejs/biome':
-        specifier: ^1.4.1
+        specifier: ^1.7.3
         version: 1.7.3
-      '@rbxts/compiler-types':
-        specifier: ^2.1.1-types.0
-        version: 2.1.1-types.0
-      '@rbxts/react-reflex':
-        specifier: ^0.2.0
-        version: 0.2.0(@rbxts/react-ts@0.9.0)(@rbxts/reflex@4.3.1)
-      '@rbxts/react-roblox':
-        specifier: ^0.1.1
-        version: 0.1.2
-      '@rbxts/react-ts':
-        specifier: ^1.0.1
-        version: 1.0.1
-      '@rbxts/reflex':
-        specifier: ^4.1.0
-        version: 4.3.1
-      '@rbxts/roact':
-        specifier: npm:@rbxts/react-ts@^0.9.0
-        version: '@rbxts/react-ts@0.9.0'
-      '@rbxts/services':
-        specifier: ^1.5.1
-        version: 1.5.4
-      '@rbxts/types':
-        specifier: ^1.0.712
-        version: 1.0.776
       roblox-ts:
-        specifier: ^2.1.1
-        version: 2.3.0
+        specifier: 2.3.0-dev-3a89c93
+        version: 2.3.0-dev-3a89c93
       typescript:
         specifier: '=5.2.2'
         version: 5.2.2
@@ -113,11 +110,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@rbxts/compiler-types@2.1.1-types.0':
-    resolution: {integrity: sha512-wBRma9MgPbOxvCaQEUvraHLHAmLFGW9R6fT65+MBu3uCYM6vUNWj8l4dHRxgkUK8lnGYdGWxsr/sZFk8sdvwog==}
-
-  '@rbxts/flipper@2.0.1':
-    resolution: {integrity: sha512-kxb5AZizP05XSmo3waS/QkcfNMD5b6HX4gGwyHOyBow260R5MIT4L/ZUPLvleXXyb9b67X4NVmHoac1tPXOLNA==}
+  '@rbxts/compiler-types@2.3.0-types.1':
+    resolution: {integrity: sha512-NZWNo+fC4icfJte+NiDSDdWJo1KwzD0MDQ2iBi70YhNYlkA7+Xc+B1udbVqxLJuBur2JxG5bbKrpMAfHqfCtbw==}
 
   '@rbxts/highlighter@0.8.2-ts.1':
     resolution: {integrity: sha512-KUT0KUdSko+vHeX+hqBbONyFnYTZC6A87dMtfXSKhuZKmDYftAYlxayLwKVllr4C+gb6lDbO4FST0PlpLYsveg==}
@@ -125,59 +119,43 @@ packages:
   '@rbxts/inspect@1.0.1':
     resolution: {integrity: sha512-O+fbpjl0iKWfVSILrgBRoZcCUzYSbRIOrgW8RrLWNBLFzoxIBu9uydx4RavYgT2RsmRm5zK2aM3MakEZ2z+jlQ==}
 
-  '@rbxts/luau-polyfill-internal@1.2.3-ts.0':
-    resolution: {integrity: sha512-LG1h4uf+MpMxu6RfOLowRe+NOs2SWXzCmYd49WvfR8ZKVUNHvT0BeVIL9rS9q//mTlz8BXDyl5EVIyjnKgsekA==}
-
   '@rbxts/object-utils@1.0.4':
     resolution: {integrity: sha512-dLLhf022ipV+9i910sOE7kl9losKHoon0WgeerHqVMQA5EYsLUsVT2AxhJuhk8MiDn5oJ2GiFofE/LadY9TpJQ==}
 
-  '@rbxts/pretty-react-hooks@0.2.1':
-    resolution: {integrity: sha512-lCBWb1nV2SaeZHOQACco6t9yPxmAt+8Rr4zMgDJQIk+tHDPJ6QVqyCGHodNC4+lQki3lEGxvMHq+RLLcr7YpEQ==}
+  '@rbxts/react-reflex@0.3.4':
+    resolution: {integrity: sha512-GCXd7PjS/ovxD5v2oWqKMrxXROL5k49DiQC2M4UOUKHp+rGJeRGTlGcThnS7uqg6GZpSaCbPPsDZAx1hm7E2Yw==}
     peerDependencies:
-      '@rbxts/flipper': ^2.0.1
-      '@rbxts/roact': '*'
+      '@rbxts/react': '*'
+      '@rbxts/reflex': '*'
 
-  '@rbxts/promise-forward@1.0.5':
-    resolution: {integrity: sha512-FrL3pIQDbRD1hKsUNH1Fwwd5jOuqU0vzKQI4Xo96AqzizYc4fb6vDkUg9Iq+IFki6FVlFvPN+YnvkCxGMjJw4Q==}
+  '@rbxts/react-roblox@0.3.6':
+    resolution: {integrity: sha512-4o6UUPXHZMZuUuAl92aTe/b1YoQkuPFsah3iQVV+Ic50cJivX0cBqEs5sGj6GviBUbQI1ZilYBhlc0/uk63iSA==}
 
-  '@rbxts/react-internal@0.2.2':
-    resolution: {integrity: sha512-/34bcOntTzucAwMvo2OtSJT05zfH88kjR0UKyBcADbbZ71KgMKai2Q8ccKKt7IuoPJDzP14dCHd5pXL44M2rkw==}
+  '@rbxts/react-vendor@0.1.0':
+    resolution: {integrity: sha512-RGyKA2djMy5snBMCf6iKFdtm77rkrJuLU8ysGtMcBnqz2Jip6oDAwIpMXIqcGplCPXO+83iLuIs55eefp9qa7A==}
 
-  '@rbxts/react-reconciler-internal@0.2.1':
-    resolution: {integrity: sha512-+1iF6id3YuhChfJguBFqzDtYvruGFhkLz9Wr8T0ekp7RlGe4l7d7KLUg5l8GRPj9FbmjQFc0UufBHWmKkrJ2qQ==}
+  '@rbxts/react-vendor@0.3.6':
+    resolution: {integrity: sha512-q3HilP6ZNHSgWW0lwka+Ft4Iq+fnPBppOeQhGua1XCtM2hEqhmUmME8DI1UlnaK/aGzdYW1bWC7YfHZhHGsIeA==}
 
-  '@rbxts/react-reflex@0.2.0':
-    resolution: {integrity: sha512-pPrRpIwl8Qzz7GryoP9KrZCQyJCy6ohjlboFIMhe+DcRtqoO2nV7bboifozE7sq3vK0T7UP7fPjIFmaJzZeJIA==}
-    peerDependencies:
-      '@rbxts/reflex': ^4.0.0
-      '@rbxts/roact': '*'
+  '@rbxts/react@0.1.1':
+    resolution: {integrity: sha512-qTW24vKD0z2/LALAvXpk16brSeP4weB0w48Jio1z3obO+HdzzEaJ1y3ut6/iKnXl7LCtMO+QOfcxZgLmRqS/5A==}
 
-  '@rbxts/react-roblox@0.1.2':
-    resolution: {integrity: sha512-74R0iemEWSgrE8f98JMfdQFSE+VpJTqo91aaZoBbskqHdeWX+kvVxjkiE5nMOkjIfptVHlZvD7P18hOTe2lwog==}
-
-  '@rbxts/react-ts@0.9.0':
-    resolution: {integrity: sha512-u8sSmEpGio+udmXPnfHMoTENgI/PkAPeqs4qwagkntiMiqo/EbTSh7HJHaYh5pFcRgdaTxOvtcZyfjfr4lhgiA==}
-
-  '@rbxts/react-ts@1.0.1':
-    resolution: {integrity: sha512-u/QsFkjWwEbr502xRfCNGjtMfOjqRiVGF5gb3Ox9Z94ymHPXniVsopmT582QpTZLuEcfB5TKvsvpFzFSQ14edg==}
+  '@rbxts/react@0.3.6':
+    resolution: {integrity: sha512-GeEqKjjyJT3zG85xEVCu3IMQdYRoXk4P9XCua4oriTIfuJaSTOWUukOmQ5ILpG/BpksLqXlpH8zqKKZcZaIs3g==}
 
   '@rbxts/reflex@4.3.1':
     resolution: {integrity: sha512-S5MbEpHKeRh9NWhwGJ789WbUsmlAlpQziWaNK4+kz1EpaaQ7uHQMZAuN1DYl4+QkqmOSuPlj04COwmArBGWH1Q==}
 
-  '@rbxts/roact-compat-internal@0.3.1':
-    resolution: {integrity: sha512-euje2jF3S83VNMtNvrjDgO3XpMibyIYcstCKsvLfIDASfCArtltwQRnjk3ewq20b2hOfy4wneQ8iXu2Di7J8rw==}
+  '@rbxts/roact-hooked@2.6.2':
+    resolution: {integrity: sha512-2J/wxYOuzs7rCq5i7B+AoCSwdeQHc0jnr/HuD3wz92NVK5h2zjeEC/91Auee438/QXJKDbBGmB9cZV/p1ZVvmg==}
+    peerDependencies:
+      '@rbxts/roact': '*'
 
-  '@rbxts/scheduler-internal@0.2.1':
-    resolution: {integrity: sha512-9CVi2ZJMH+T4blfDd0t7bScBLWi49eD99eJ3Ie/Cv3WxQ5iYsZLSeSxzut5Yzkb83cYGb/alUGM/gzx0B19KQw==}
+  '@rbxts/roact@1.4.4-ts.0':
+    resolution: {integrity: sha512-gn9mBoGG/Clzgv2kyOvLNVd9dh5t6z+jukC3ITv2HnfPqvf/sMbz/VMaBoiB7t5umuiIe0LjW0ctZrkrS+uTOA==}
 
   '@rbxts/services@1.5.4':
     resolution: {integrity: sha512-Klh+gRIT8zy3xRTX1YD6FZ9nAMzkzPLTHmciigt59PEF7PJXo31CF0IU0RegQ7VSMrz1iOnXwxbIwy3htcMfOA==}
-
-  '@rbxts/set-timeout@1.1.2':
-    resolution: {integrity: sha512-P/A0IiH9wuZdSJYr4Us0MDFm61nvIFR0acfKFHLkcOsgvIgELC90Up9ugiSsaMEHRIcIcO5UjE39LuS3xTzQHw==}
-
-  '@rbxts/shared-internal@0.2.1':
-    resolution: {integrity: sha512-HWLFesx5u8NTyDMTNXEkskGT6nE5VLaEnnnq852ixiBtdfIdN/sGCgNnkwbHAq9P9cgX52V3EB5GdVeWcwJzkA==}
 
   '@rbxts/t@3.1.1':
     resolution: {integrity: sha512-r+IvHHGLt9ZM8+cJAs5Q7ZyGaSlsbkXTaeat85FxRmjjozykHLbQ24rY/5utJbp63a5uCy3Wyl1fGv/Gk/GnIw==}
@@ -193,6 +171,30 @@ packages:
 
   '@roblox-ts/rojo-resolver@1.0.6':
     resolution: {integrity: sha512-+heTECMo6BdH3a3h4DCj+8kJvwKuxWqBevcW/m2BzQaVtmo1GtLa4V4bJCMvDuAMeEqYKQZUB7546nN2dcqqAA==}
+
+  '@types/fs-extra@11.0.4':
+    resolution: {integrity: sha512-yTbItCNreRooED33qjunPthRcSjERP1r4MqCZc7wv0u2sUkzTFp45tgUfS5+r7FrZPdmCCNflLhVSP/o+SemsQ==}
+
+  '@types/jsonfile@6.1.4':
+    resolution: {integrity: sha512-D5qGUYwjvnNNextdU59/+fI+spnwtTFmyQP0h+PfIOSkNfpU6AOICUOkm4i0OnSk+NyjdPJrxCDro0sJsWlRpQ==}
+
+  '@types/mocha@10.0.6':
+    resolution: {integrity: sha512-dJvrYWxP/UcXm36Qn36fxhUKu8A/xMRXVT2cliFF1Z7UA9liG5Psj3ezNSZw+5puH2czDXRLcXQxf8JbJt0ejg==}
+
+  '@types/node@20.12.12':
+    resolution: {integrity: sha512-eWLDGF/FOSPtAvEqeRAQ4C8LSA7M1I7i0ky1I8U7kD1J5ITyW3AsRhQrKVoWf5pFKZ2kILsEGJhsI9r93PYnOw==}
+
+  '@types/prompts@2.4.9':
+    resolution: {integrity: sha512-qTxFi6Buiu8+50/+3DGIWLHM6QuWsEKugJnnP6iv2Mc4ncxE4A/OJkjuVOA+5X0X1S/nq5VJRa8Lu+nwcvbrKA==}
+
+  '@types/resolve@1.20.6':
+    resolution: {integrity: sha512-A4STmOXPhMUtHH+S6ymgE2GiBSMqf4oTvcQZMcHzokuTLVYzXTB8ttjcgxOVaAp2lGwEdzZ0J+cRbbeevQj1UQ==}
+
+  '@types/yargs-parser@21.0.3':
+    resolution: {integrity: sha512-I4q9QU9MQv4oEOz4tAHJtNz1cwuLxn2F3xcc2iV5WdqLPpUnj30aUuxt1mAxYTG+oe8CZMV/+6rU4S4gRDzqtQ==}
+
+  '@types/yargs@17.0.32':
+    resolution: {integrity: sha512-xQ67Yc/laOG5uMfX/093MRlGGCIBzZMarVa+gfNKJxWAIgykYpVGkBdbqEzGDDfCrVUj6Hiff4mTZ5BA6TmAog==}
 
   ajv@8.13.0:
     resolution: {integrity: sha512-PRA911Blj99jR5RMeTunVbNXMF6Lp4vZXnk5GQjcnUWUTsrXtekg/pnmFFI2u/I36Y/2bITGS30GZCXei6uNkA==}
@@ -213,8 +215,8 @@ packages:
     resolution: {integrity: sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==}
     engines: {node: '>=8'}
 
-  braces@3.0.2:
-    resolution: {integrity: sha512-b8um+L1RzM3WDSzvhm6gIz1yfTbBt6YTlcEKAvsmqCZZFw46z626lVj9j1yEPW33H5H+lBQpZMP1k8l+78Ha0A==}
+  braces@3.0.3:
+    resolution: {integrity: sha512-yQbXgO/OSZVD2IsiLlro+7Hf6Q18EJrKSEsdoMzKePKXct3gvD8oLcOQdIzGupr5Fj+EDe8gO/lxc1BzfMpxvA==}
     engines: {node: '>=8'}
 
   chokidar@3.6.0:
@@ -242,8 +244,8 @@ packages:
   fast-deep-equal@3.1.3:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
 
-  fill-range@7.0.1:
-    resolution: {integrity: sha512-qOo9F+dMUmC2Lcb4BbVvnKJxTPjCm+RRpe4gDuGrzkL7mEVl/djYSu2OdQ2Pa302N4oqkSg9ir6jaLWJ2USVpQ==}
+  fill-range@7.1.1:
+    resolution: {integrity: sha512-YsGpe3WHLK8ZYi4tWDg2Jy3ebRz2rXowDxnld4bkQB00cc/1Zw9AWnC0i9ztDJitivtQvaI9KaLyKrc+hBW0yg==}
     engines: {node: '>=8'}
 
   fs-extra@11.2.0:
@@ -302,6 +304,10 @@ packages:
   jsonfile@6.1.0:
     resolution: {integrity: sha512-5dgndWOriYSm5cnYaJNhalLNDKOqFwyDB/rr1E9ZsGciGvKPs8R2xYGCacuf3z6K1YKDz182fd+fY3cn3pMqXQ==}
 
+  kleur@3.0.3:
+    resolution: {integrity: sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==}
+    engines: {node: '>=6'}
+
   kleur@4.1.5:
     resolution: {integrity: sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ==}
     engines: {node: '>=6'}
@@ -337,8 +343,8 @@ packages:
     resolution: {integrity: sha512-oKWePCxqpd6FlLvGV1VU0x7bkPmmCNolxzjMf4NczoDnQcIWrAF+cPtZn5i6n+RfD2d9i0tzpKnG6Yk168yIyw==}
     hasBin: true
 
-  roblox-ts@2.3.0:
-    resolution: {integrity: sha512-swz+3sxHcB1ww5iUkwxzPFqrbWYmjD9uDriLhta5MAShvRFW4Vdku/aBSU4KiLqtVWYvYo32G+5bXg1Pw2yvIA==}
+  roblox-ts@2.3.0-dev-3a89c93:
+    resolution: {integrity: sha512-f5iL9Y4chXqG1q75Wqt+FfQkLkrn9s848LXSMsGCR/lsut/LXgthT49l1i/NWRgGy6DevaaQiuKlUtbJm5SrbQ==}
     hasBin: true
 
   string-width@4.2.3:
@@ -357,10 +363,21 @@ packages:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
     engines: {node: '>=8.0'}
 
+  ts-expose-internals@5.3.3:
+    resolution: {integrity: sha512-0lW96u0pa08dq9QLYUBRbgGkvsD+LvPAVGe94kr2tHaRZAxgckwJ+qqc1BSRoR1rpkTZf7AWAa6DKrLGFmctwg==}
+
   typescript@5.2.2:
     resolution: {integrity: sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==}
     engines: {node: '>=14.17'}
     hasBin: true
+
+  typescript@5.4.2:
+    resolution: {integrity: sha512-+2/g0Fds1ERlP6JsakQQDXjZdZMM+rqpamFZJEKh4kwTIn3iDkgKtby0CeNd5ATNZ4Ry1ax15TMx0W2V+miizQ==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
+  undici-types@5.26.5:
+    resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
 
   universalify@2.0.1:
     resolution: {integrity: sha512-gptHNQghINnc/vTGIk0SOFGFNXw7JVrlRUtConJRlvaw6DuX0wO5Jeko9sWrMBhh+PsYAZ7oXAiOnf/UKogyiw==}
@@ -422,87 +439,45 @@ snapshots:
   '@biomejs/cli-win32-x64@1.7.3':
     optional: true
 
-  '@rbxts/compiler-types@2.1.1-types.0': {}
-
-  '@rbxts/flipper@2.0.1': {}
+  '@rbxts/compiler-types@2.3.0-types.1': {}
 
   '@rbxts/highlighter@0.8.2-ts.1': {}
 
   '@rbxts/inspect@1.0.1': {}
 
-  '@rbxts/luau-polyfill-internal@1.2.3-ts.0': {}
-
   '@rbxts/object-utils@1.0.4': {}
 
-  '@rbxts/pretty-react-hooks@0.2.1(@rbxts/flipper@2.0.1)(@rbxts/react-ts@0.9.0)':
+  '@rbxts/react-reflex@0.3.4(@rbxts/react@0.1.1)(@rbxts/reflex@4.3.1)':
     dependencies:
-      '@rbxts/flipper': 2.0.1
-      '@rbxts/react-roblox': 0.1.2
-      '@rbxts/roact': '@rbxts/react-ts@0.9.0'
-      '@rbxts/services': 1.5.4
-      '@rbxts/set-timeout': 1.1.2
-
-  '@rbxts/promise-forward@1.0.5': {}
-
-  '@rbxts/react-internal@0.2.2':
-    dependencies:
-      '@rbxts/luau-polyfill-internal': 1.2.3-ts.0
-      '@rbxts/shared-internal': 0.2.1
-
-  '@rbxts/react-reconciler-internal@0.2.1':
-    dependencies:
-      '@rbxts/luau-polyfill-internal': 1.2.3-ts.0
-      '@rbxts/promise-forward': 1.0.5
-      '@rbxts/react-internal': 0.2.2
-      '@rbxts/scheduler-internal': 0.2.1
-      '@rbxts/shared-internal': 0.2.1
-
-  '@rbxts/react-reflex@0.2.0(@rbxts/react-ts@0.9.0)(@rbxts/reflex@4.3.1)':
-    dependencies:
+      '@rbxts/react': 0.1.1
       '@rbxts/reflex': 4.3.1
-      '@rbxts/roact': '@rbxts/react-ts@0.9.0'
 
-  '@rbxts/react-roblox@0.1.2':
+  '@rbxts/react-roblox@0.3.6':
     dependencies:
-      '@rbxts/luau-polyfill-internal': 1.2.3-ts.0
-      '@rbxts/react-internal': 0.2.2
-      '@rbxts/react-reconciler-internal': 0.2.1
-      '@rbxts/scheduler-internal': 0.2.1
-      '@rbxts/shared-internal': 0.2.1
+      '@rbxts/react': 0.3.6
+      '@rbxts/react-vendor': 0.3.6
 
-  '@rbxts/react-ts@0.9.0':
-    dependencies:
-      '@rbxts/react-internal': 0.2.2
-      '@rbxts/roact-compat-internal': 0.3.1
+  '@rbxts/react-vendor@0.1.0': {}
 
-  '@rbxts/react-ts@1.0.1':
+  '@rbxts/react-vendor@0.3.6': {}
+
+  '@rbxts/react@0.1.1':
     dependencies:
-      '@rbxts/react-internal': 0.2.2
-      '@rbxts/roact-compat-internal': 0.3.1
+      '@rbxts/react-vendor': 0.1.0
+
+  '@rbxts/react@0.3.6':
+    dependencies:
+      '@rbxts/react-vendor': 0.3.6
 
   '@rbxts/reflex@4.3.1': {}
 
-  '@rbxts/roact-compat-internal@0.3.1':
+  '@rbxts/roact-hooked@2.6.2(@rbxts/roact@1.4.4-ts.0)':
     dependencies:
-      '@rbxts/luau-polyfill-internal': 1.2.3-ts.0
-      '@rbxts/react-internal': 0.2.2
-      '@rbxts/react-roblox': 0.1.2
-      '@rbxts/shared-internal': 0.2.1
+      '@rbxts/roact': 1.4.4-ts.0
 
-  '@rbxts/scheduler-internal@0.2.1':
-    dependencies:
-      '@rbxts/luau-polyfill-internal': 1.2.3-ts.0
-      '@rbxts/shared-internal': 0.2.1
+  '@rbxts/roact@1.4.4-ts.0': {}
 
   '@rbxts/services@1.5.4': {}
-
-  '@rbxts/set-timeout@1.1.2':
-    dependencies:
-      '@rbxts/services': 1.5.4
-
-  '@rbxts/shared-internal@0.2.1':
-    dependencies:
-      '@rbxts/luau-polyfill-internal': 1.2.3-ts.0
 
   '@rbxts/t@3.1.1': {}
 
@@ -519,6 +494,34 @@ snapshots:
     dependencies:
       ajv: 8.13.0
       fs-extra: 11.2.0
+
+  '@types/fs-extra@11.0.4':
+    dependencies:
+      '@types/jsonfile': 6.1.4
+      '@types/node': 20.12.12
+
+  '@types/jsonfile@6.1.4':
+    dependencies:
+      '@types/node': 20.12.12
+
+  '@types/mocha@10.0.6': {}
+
+  '@types/node@20.12.12':
+    dependencies:
+      undici-types: 5.26.5
+
+  '@types/prompts@2.4.9':
+    dependencies:
+      '@types/node': 20.12.12
+      kleur: 3.0.3
+
+  '@types/resolve@1.20.6': {}
+
+  '@types/yargs-parser@21.0.3': {}
+
+  '@types/yargs@17.0.32':
+    dependencies:
+      '@types/yargs-parser': 21.0.3
 
   ajv@8.13.0:
     dependencies:
@@ -540,14 +543,14 @@ snapshots:
 
   binary-extensions@2.3.0: {}
 
-  braces@3.0.2:
+  braces@3.0.3:
     dependencies:
-      fill-range: 7.0.1
+      fill-range: 7.1.1
 
   chokidar@3.6.0:
     dependencies:
       anymatch: 3.1.3
-      braces: 3.0.2
+      braces: 3.0.3
       glob-parent: 5.1.2
       is-binary-path: 2.1.0
       is-glob: 4.0.3
@@ -574,7 +577,7 @@ snapshots:
 
   fast-deep-equal@3.1.3: {}
 
-  fill-range@7.0.1:
+  fill-range@7.1.1:
     dependencies:
       to-regex-range: 5.0.1
 
@@ -627,6 +630,8 @@ snapshots:
     optionalDependencies:
       graceful-fs: 4.2.11
 
+  kleur@3.0.3: {}
+
   kleur@4.1.5: {}
 
   normalize-path@3.0.0: {}
@@ -651,16 +656,23 @@ snapshots:
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
 
-  roblox-ts@2.3.0:
+  roblox-ts@2.3.0-dev-3a89c93:
     dependencies:
       '@roblox-ts/luau-ast': 1.0.11
       '@roblox-ts/path-translator': 1.0.0
       '@roblox-ts/rojo-resolver': 1.0.6
+      '@types/fs-extra': 11.0.4
+      '@types/mocha': 10.0.6
+      '@types/node': 20.12.12
+      '@types/prompts': 2.4.9
+      '@types/resolve': 1.20.6
+      '@types/ts-expose-internals': ts-expose-internals@5.3.3
+      '@types/yargs': 17.0.32
       chokidar: 3.6.0
       fs-extra: 11.2.0
       kleur: 4.1.5
       resolve: 1.22.8
-      typescript: 5.2.2
+      typescript: 5.4.2
       yargs: 17.7.2
 
   string-width@4.2.3:
@@ -679,7 +691,13 @@ snapshots:
     dependencies:
       is-number: 7.0.0
 
+  ts-expose-internals@5.3.3: {}
+
   typescript@5.2.2: {}
+
+  typescript@5.4.2: {}
+
+  undici-types@5.26.5: {}
 
   universalify@2.0.1: {}
 

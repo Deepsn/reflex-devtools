@@ -1,7 +1,8 @@
 import inspect from "@rbxts/inspect"
-import Roact, { memo, useMemo } from "@rbxts/roact"
+import { memo, useMemo } from "@rbxts/react"
+import React from "@rbxts/react"
 import { useRootProducer, useRootSelector } from "store"
-import { Action } from "store/game"
+import type { Action } from "store/game"
 
 interface Props {
 	action: Action

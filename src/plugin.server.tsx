@@ -2,7 +2,7 @@
 
 import { ReflexProvider } from "@rbxts/react-reflex"
 import { createRoot } from "@rbxts/react-roblox"
-import Roact from "@rbxts/roact"
+import React from "@rbxts/react"
 import { App } from "app"
 import { store } from "store"
 import { configureSettings, listenForChanges } from "./utils/settings"
