@@ -1,6 +1,8 @@
 import Highlighter from "@rbxts/highlighter"
-import React, { useBinding, useEffect, useMemo, type Element } from "@rbxts/react"
+import React, { useBinding, useEffect, useMemo, useState, type Element } from "@rbxts/react"
+import { RowInput } from "app/rowInput"
 import { useRootProducer, useRootSelector } from "store"
+import type { Action } from "store/game"
 import { ActionSelection } from "./actionSelection"
 import { ActionState } from "./actionState"
 import { RowButton } from "./rowButton"
@@ -14,38 +16,50 @@ const ROW_HEIGHT = 45
 export function App() {
 	const store = useRootProducer()
 
-	const [cachedActions, setCachedActions] = useBinding<Map<number, Element>>(new Map())
+	const [cachedActions, setCachedActions] = useBinding<Action[]>([])
 
-	const actions = useRootSelector((state) => state.game.actions)
+	const allActions = useRootSelector((state) => state.game.actions)
 	const enabled = useRootSelector((state) => state.widget.enabled)
 	const selectedIndex = useRootSelector((state) => state.widget.selectedIndex)
 	const autoSelectLatest = useRootSelector((state) => state.widget.autoSelectLatest)
 	const showArgs = useRootSelector((state) => state.widget.showArgs)
 	const diffMode = useRootSelector((state) => state.widget.diffMode)
+	const filter = useRootSelector((state) => state.widget.filter)
 
-	const selectedAction = selectedIndex !== undefined ? actions[selectedIndex - 1] : undefined
+	const [filterText, setFilterText] = useState("")
+	const [filterNot, setFilterNot] = useState(false)
+
+	const selectedAction = selectedIndex !== undefined ? allActions[selectedIndex - 1] : undefined
 
 	useEffect(() => {
-		const last = actions.size()
+		const last = allActions.size()
 		if (autoSelectLatest && last >= 0) {
 			store.selectedAction(last)
 		}
-	}, [selectedIndex, actions, autoSelectLatest])
+	}, [selectedIndex, allActions, autoSelectLatest])
 
-	const actionSelections = useMemo(() => {
+	useEffect(() => {
 		if (!enabled) {
-			return cachedActions.getValue()
+			setCachedActions(allActions)
 		}
+	}, [enabled])
 
+	useEffect(() => {
+		setFilterText(filter.match)
+		setFilterNot(filter.filterNot)
+	}, [filter])
+
+	const filteredActions = useMemo(() => {
 		const selections = new Map<number, Element>()
 
-		for (const [index, action] of pairs(actions)) {
+		for (const [index, action] of pairs(enabled ? allActions : cachedActions.getValue())) {
+			if (filterText.gsub(" ", "")[0] !== "" && !!action.name.find(filterText)[0] === filterNot) continue
+
 			selections.set(index, <ActionSelection action={action} index={index} selected={index === selectedIndex} />)
 		}
 
-		setCachedActions(selections)
 		return selections
-	}, [actions, selectedIndex, enabled])
+	}, [filterText, filterNot, allActions, selectedIndex, enabled])
 
 	return (
 		<frame BackgroundTransparency={1} Size={UDim2.fromScale(1, 1)} key="main">
@@ -71,7 +85,7 @@ export function App() {
 
 				<RowText order={-1} text="•" />
 
-				<RowText order={0} text={`${actions.size()} dispatched`} />
+				<RowText order={0} text={`${allActions.size()} dispatched`} />
 				<RowButton key="clear" onClick={() => store.clear()} order={1} text="Clear" />
 
 				<RowText order={2} text="•" />
@@ -104,6 +118,23 @@ export function App() {
 					text={diffMode ? "On" : "Off"}
 				/>
 
+				<RowText order={11} text="•" />
+
+				<RowButton
+					key="filter-not"
+					onClick={() => setFilterNot(!filterNot)}
+					order={13}
+					text={`Invert filter: ${filterNot ? "On" : "Off"}`}
+				/>
+
+				<RowInput
+					key="filter-text"
+					placeholder="Filter actions"
+					onType={(text) => setFilterText(text)}
+					order={14}
+					text={filterText}
+				/>
+
 				<uilistlayout
 					FillDirection={Enum.FillDirection.Horizontal}
 					HorizontalAlignment={Enum.HorizontalAlignment.Left}
@@ -126,7 +157,7 @@ export function App() {
 				Size={new UDim2(ACTIONS_WIDTH, 0, 1, -ROW_HEIGHT)}
 				key="actions"
 			>
-				{actionSelections}
+				{filteredActions}
 				<uilistlayout Padding={new UDim(0, 5)} SortOrder={Enum.SortOrder.LayoutOrder} key="layout" />
 			</scrollingframe>
 
@@ -138,7 +169,7 @@ export function App() {
 			>
 				{selectedAction && (
 					// biome-ignore lint/style/noNonNullAssertion: selectedIndex is known to exist
-					<ActionState state={selectedAction.state} lastState={actions[selectedIndex! - 2]?.state} />
+					<ActionState state={selectedAction.state} lastState={allActions[selectedIndex! - 2]?.state} />
 				)}
 			</frame>
 		</frame>

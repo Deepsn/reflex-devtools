@@ -9,6 +9,10 @@ export interface Widget {
 	autoSelectLatest: boolean
 	showArgs: boolean
 	diffMode: boolean
+	filter: {
+		match: string
+		filterNot: boolean
+	}
 }
 
 const initialState: Widget = {
@@ -17,6 +21,10 @@ const initialState: Widget = {
 	autoSelectLatest: true,
 	showArgs: true,
 	diffMode: false,
+	filter: {
+		match: "incrementPower",
+		filterNot: false,
+	},
 }
 
 export const widget = createProducer(initialState, {
@@ -44,5 +52,12 @@ export const widget = createProducer(initialState, {
 	changeDiffMode: (state, mode: boolean) => ({
 		...state,
 		diffMode: mode,
+	}),
+	changeFilter: (state, match: string, filterNot: boolean) => ({
+		...state,
+		filter: {
+			match,
+			filterNot,
+		},
 	}),
 })
