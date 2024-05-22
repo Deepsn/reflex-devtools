@@ -28,6 +28,8 @@ You will need to use a middleware to dispatch actions and state to the plugin.
 Here's what I use:
 
 ```ts
+const event = ReplicatedStorage.FindFirstChild("REFLEX_DEVTOOLS_CLIENT") as BindableEvent;
+
 export const devToolsMiddleware: ProducerMiddleware<RootState> = () => {
 	return (nextAction, actionName) => {
 		return (...args) => {
