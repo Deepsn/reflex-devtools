@@ -28,22 +28,19 @@ You will need to use a middleware to dispatch actions and state to the plugin.
 Here's what I use:
 
 ```ts
-const event = ReplicatedStorage.FindFirstChild("REFLEX_DEVTOOLS") as RemoteEvent
-
-const middleware: ProducerMiddleware<RootState, RootActions> = () => {
+export const devToolsMiddleware: ProducerMiddleware<RootState> = () => {
 	return (nextAction, actionName) => {
 		return (...args) => {
-			const state = nextAction(...args)
+			const state = nextAction(...args);
+
 			if (RunService.IsStudio() && event) {
-				event.FireServer({ name: actionName, args: [...args], state })
+				event.Fire({ name: actionName, args: [...args], state });
 			}
 
-			return state
-		}
-	}
-}
-
-export = middleware
+			return state;
+		};
+	};
+};
 ```
 
 Whatever you do, fire the event an object that satisfies the following type:
@@ -61,10 +58,5 @@ interface DispatchedAction {
 ```ts
 export const store = combineProducers({
 	// ...
-}).applyMiddleware(devTools)
+}).applyMiddleware(devToolsMiddleware)
 ```
-
-## Why does it use RemoteEvents?
-
-Couldn't get BindableEvents to be received by the Plugin.
-Context: https://discord.com/channels/385151591524597761/385151591998816257/1149590579529912320
