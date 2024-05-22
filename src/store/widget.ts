@@ -22,7 +22,7 @@ const initialState: Widget = {
 	showArgs: true,
 	diffMode: false,
 	filter: {
-		match: "incrementPower",
+		match: "",
 		filterNot: false,
 	},
 }
