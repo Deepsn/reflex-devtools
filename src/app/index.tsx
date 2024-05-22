@@ -1,6 +1,5 @@
 import Highlighter from "@rbxts/highlighter"
-import { Element, useBinding, useEffect, useMemo } from "@rbxts/react"
-import React from "@rbxts/react"
+import React, { useBinding, useEffect, useMemo, type Element } from "@rbxts/react"
 import { useRootProducer, useRootSelector } from "store"
 import { ActionSelection } from "./actionSelection"
 import { ActionState } from "./actionState"
@@ -10,7 +9,7 @@ import { RowText } from "./rowText"
 Highlighter.matchStudioSettings()
 
 const ACTIONS_WIDTH = 0.3
-const ROW_HEIGHT = 30
+const ROW_HEIGHT = 45
 
 export function App() {
 	const store = useRootProducer()
@@ -50,11 +49,16 @@ export function App() {
 
 	return (
 		<frame BackgroundTransparency={1} Size={UDim2.fromScale(1, 1)} key="main">
-			<frame
+			<scrollingframe
+				CanvasSize={new UDim2()}
+				ScrollBarThickness={4}
+				AutomaticCanvasSize={"X"}
+				TopImage={"rbxasset://textures/ui/Scroll/scroll-middle.png"}
+				BottomImage={"rbxasset://textures/ui/Scroll/scroll-middle.png"}
 				BackgroundColor3={settings().Studio.Theme.GetColor(Enum.StudioStyleGuideColor.Titlebar)}
 				BackgroundTransparency={0}
 				BorderSizePixel={0}
-				Size={new UDim2(1, 0, 0, ROW_HEIGHT)}
+				Size={new UDim2(1, 0, 0, ROW_HEIGHT - 6)}
 				key="topRow"
 			>
 				<RowText text={"Enabled"} order={-3} />
@@ -109,7 +113,7 @@ export function App() {
 					key="layout"
 				/>
 				<uipadding PaddingLeft={new UDim(0, 10)} PaddingRight={new UDim(0, 10)} key="padding" />
-			</frame>
+			</scrollingframe>
 
 			<scrollingframe
 				AutomaticCanvasSize={Enum.AutomaticSize.Y}
